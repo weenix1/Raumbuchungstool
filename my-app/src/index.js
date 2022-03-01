@@ -3,5 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { RecoilRoot } from "recoil";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <RecoilRoot>
+    <App />
+  </RecoilRoot>,
+  document.getElementById("root")
+);
