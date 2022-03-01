@@ -5,8 +5,10 @@ import Alert from "react-bootstrap/Alert";
 import { parseISO, format } from "date-fns";
 import { rooms as roomsAtom } from "../../atoms/atoms";
 import { useRecoilValue } from "recoil";
+import { useAuthGuard } from "../../Tools/tools";
 
 const Bookings = () => {
+  useAuthGuard();
   const rooms = useRecoilValue(roomsAtom);
   const [reservations, setReservations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

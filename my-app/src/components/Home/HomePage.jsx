@@ -5,11 +5,16 @@ import { rooms as roomsAtom, loader as loaderAtom } from "../../atoms/atoms";
 import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import "./styles.scss";
+import { roomIdAtom } from "../../atoms/atoms";
+import { Link } from "react-router-dom";
+import { useAuthGuard } from "../../Tools/tools";
 
 const HomePage = () => {
+  useAuthGuard();
   const [rooms, setRooms] = useRecoilState(roomsAtom);
   console.log("here is rooms", rooms);
   const [isLoading, setIsLoading] = useRecoilState(loaderAtom);
+  /* const [roomId, setRoomId] = useRecoilState(roomIdAtom); */
 
   useEffect(() => {
     getRooms();
@@ -31,6 +36,10 @@ const HomePage = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <Container id="home-container">
@@ -49,10 +58,18 @@ const HomePage = () => {
                   <Card.Title className="cards-title">
                     {room.roomName}
                   </Card.Title>
-                  <Card.Text className="cards-text">{room.status}</Card.Text>
-                  <span>{room.maxNumOfPeople}</span>
+                  <Card.Text
+                    className={`${
+                      room.status === "free" ? "cards-text" : "card-text2"
+                    }`}
+                  >
+                    {room.status}
+                  </Card.Text>
+                  <span>Maximum number of people: {room.maxNumOfPeople}</span>
                 </Card.Body>
-                <Button>Book now</Button>
+                <Link to={`${room._id}`}>
+                  <Button>Book now</Button>
+                </Link>
               </Card>
             </Col>
           ))}

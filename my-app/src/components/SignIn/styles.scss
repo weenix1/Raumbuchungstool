@@ -1,0 +1,17 @@
+.login {
+  background-color: #f5f5f5 !important;
+  min-height: 100vh;
+
+  .svg-img:hover {
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+  }
+
+  .svg-img {
+    cursor: pointer;
+  }
+
+  .btn-login:hover {
+    transition: all 0.2s ease-in-out;
+  }
+}
