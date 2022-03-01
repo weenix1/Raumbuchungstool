@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export const rooms = atom({
   key: "rooms",
@@ -47,4 +47,17 @@ export const reservationAtom = atom({
 export const roomIdAtom = atom({
   key: "roomId",
   default: null,
+});
+
+export const userAtom = atom({
+  key: "userId",
+  default: "",
+});
+
+export const userAtomSelector = selector({
+  key: "userDataId",
+  get: ({ get }) => {
+    const userDataId = get(userAtom);
+    return userDataId;
+  },
 });

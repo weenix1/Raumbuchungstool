@@ -18,9 +18,15 @@ const SignIn = () => {
   useAuthGuard();
   const [userProfile, setUserProfile] = useRecoilState(userProfileAtom);
   const [error, setError] = useState(false);
+  console.log("user profile....", userProfile);
 
   const BASE_URL = process.env.REACT_APP_BACKEND;
   console.log("baseUrl:==", BASE_URL);
+
+  const getValue = () => {
+    console.log("here is user email", userProfile.email);
+    console.log("here is user password", userProfile.password);
+  };
 
   const navigate = useNavigate();
 
@@ -57,9 +63,13 @@ const SignIn = () => {
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
+            type="text"
             placeholder="Enter email"
             value={userProfile.email}
-            onChange={(e) => setUserProfile(e.target.value)}
+            onChange={(e) => {
+              setUserProfile({ ...userProfile, email: e.target.value });
+              getValue();
+            }}
             name="email"
           />
         </Form.Group>
@@ -72,7 +82,9 @@ const SignIn = () => {
             name="password"
             value={userProfile.password}
             placeholder="Password"
-            onChange={(e) => setUserProfile(e.target.value)}
+            onChange={(e) =>
+              setUserProfile({ ...userProfile, password: e.target.value })
+            }
           />
         </Form.Group>
 
