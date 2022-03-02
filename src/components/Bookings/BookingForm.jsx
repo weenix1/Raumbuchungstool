@@ -19,10 +19,11 @@ const BookingForm = () => {
   const BASE_URL = process.env.REACT_APP_BACKEND;
   const { id } = useParams();
 
-  const [setUserId] = useRecoilState(userAtom);
+  const [userId, setUserId] = useRecoilState(userAtom);
 
   const rooms = useRecoilValue(roomsAtom);
   const userDataId = useRecoilValue(userAtomSelector);
+  console.log("userDataId", userDataId);
 
   const [reservationData, setReservationData] = useState({
     user: userDataId,
@@ -32,6 +33,7 @@ const BookingForm = () => {
     endDate: "",
   });
 
+  console.log("reservationData", reservationData);
   const [room, setRoom] = useState("");
 
   const navigate = useNavigate();
@@ -151,7 +153,6 @@ const BookingForm = () => {
                       handleInput("startDate", e.target.value);
                     }}
                     required
-                    unique
                   />
                 </Form.Group>
                 <Form.Group>
@@ -163,7 +164,6 @@ const BookingForm = () => {
                       handleInput("endDate", e.target.value);
                     }}
                     required
-                    unique
                   />
                 </Form.Group>
                 <Button className="booking-button" type="submit">
