@@ -11,6 +11,7 @@ const Bookings = () => {
   useAuthGuard();
   const rooms = useRecoilValue(roomsAtom);
   const [reservations, setReservations] = useState([]);
+  console.log("here is the booked reservation", reservations);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -20,13 +21,11 @@ const Bookings = () => {
 
   const fetchReservations = async () => {
     try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/reservation"
-      );
+      let response = await fetch("http://localhost:3011/bookings");
 
       if (response.ok) {
         let data = await response.json();
-        setReservations(data);
+        setReservations(data.bookings);
         setIsLoading(false);
       } else {
         setIsLoading(false);
@@ -48,8 +47,8 @@ const Bookings = () => {
         <ListGroup className="mb-5">
           {reservations.map((res) => (
             <ListGroup.Item key={res._id}>
-              {res.name} for {res.numberOfPeople} on{" "}
-              {format(parseISO(res.dateTime), "EEEE, MMM. do - HH:mm")}
+              {res.name} for {res.numOfPeople} on{" "}
+              {/*  {format(parseISO(res.dateTime), "EEEE, MMM. do - HH:mm")} */}
             </ListGroup.Item>
           ))}
         </ListGroup>

@@ -2,3 +2,16 @@
   font-weight: 600;
   color: royalblue;
 }
+
+.booking-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center;
+  margin-left: 18px;
+
+  .book-title {
+    margin-top: 5px;
+    color: rgb(36, 33, 41);
+  }
+}

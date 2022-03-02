@@ -6,6 +6,7 @@ import { FormControl } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userAccountAtom } from "../../atoms/atoms";
+import { useAuthGuard } from "../../Tools/tools";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -44,7 +45,9 @@ const SignUp = () => {
                 type="text"
                 name="firstName"
                 value={userAccount.firstName}
-                onChange={(e) => setUserAccount(e.target.value)}
+                onChange={(e) =>
+                  setUserAccount({ ...userAccount, firstName: e.target.value })
+                }
                 placeholder="Firstname"
               />
             </Form.Group>
@@ -56,7 +59,9 @@ const SignUp = () => {
                 type="text"
                 name="surName"
                 value={userAccount.surName}
-                onChange={(e) => setUserAccount(e.target.value)}
+                onChange={(e) =>
+                  setUserAccount({ ...userAccount, surName: e.target.value })
+                }
                 placeholder="Surname"
               />
             </Form.Group>
@@ -66,7 +71,9 @@ const SignUp = () => {
                 type="email"
                 placeholder="Email"
                 value={userAccount.email}
-                onChange={(e) => setUserAccount(e.target.value)}
+                onChange={(e) =>
+                  setUserAccount({ ...userAccount, email: e.target.value })
+                }
                 name="email"
                 className=" mt-3"
                 size="md"
@@ -80,7 +87,9 @@ const SignUp = () => {
                 type="password"
                 name="password"
                 value={userAccount.password}
-                onChange={(e) => setUserAccount(e.target.value)}
+                onChange={(e) =>
+                  setUserAccount({ ...userAccount, password: e.target.value })
+                }
                 placeholder="Password"
               />
             </Form.Group>
