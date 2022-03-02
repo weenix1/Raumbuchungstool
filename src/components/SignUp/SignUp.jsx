@@ -35,6 +35,7 @@ const SignUp = () => {
   return (
     <div className="registration ">
       <Container className="pt-5">
+        <Card>
         <div className="SignUpForm">
           <h1 className="SignInHeading">SIGN UP</h1>
           <div noValidate>
