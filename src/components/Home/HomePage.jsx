@@ -5,7 +5,6 @@ import { rooms as roomsAtom, loader as loaderAtom } from "../../atoms/atoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect } from "react";
 import "./styles.scss";
-
 import { Link } from "react-router-dom";
 import { useAuthGuard } from "../../Tools/tools";
 import { userProfile } from "../../atoms/atoms";
@@ -66,7 +65,7 @@ const HomePage = () => {
                     <span>Maximum number of people: {room.maxNumOfPeople}</span>
                   </Card.Body>
                   <Link to={`${room._id}`}>
-                    <Button>Book now</Button>
+                    <Button className="home-button ml-3 mb-2">Book now</Button>
                   </Link>
                 </Card>
               </Col>

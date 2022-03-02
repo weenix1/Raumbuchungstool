@@ -6,8 +6,12 @@
     transition: all 0.2s ease-in-out;
     color: #fff;
   }
-  .login-card {
-    background-color: #17a2b8;
+  #btng {
+    background-color: #17a2b8 !important;
+  }
+  .signIn-button {
+    display: flex;
+    align-items: center;
   }
   .svg-img {
     cursor: pointer;

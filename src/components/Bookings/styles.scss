@@ -1,6 +1,6 @@
 .room-title {
   font-weight: 600;
-  color: royalblue;
+  color: #17a2b8 !important;
 }
 
 .booking-detail {
@@ -12,6 +12,17 @@
 
   .book-title {
     margin-top: 5px;
-    color: rgb(36, 33, 41);
+    color: #17a2b8 !important;
   }
+  .booking-image {
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
+  }
+}
+
+.booking-button {
+  margin-top: 15px;
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
 }

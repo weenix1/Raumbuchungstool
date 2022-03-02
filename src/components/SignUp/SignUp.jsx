@@ -2,18 +2,17 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import { Card, FormControl } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userAccountAtom } from "../../atoms/atoms";
-import { useAuthGuard } from "../../Tools/tools";
+import "./styles.scss";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const BASE_URL = process.env.REACT_APP_BACKEND;
 
   const [userAccount, setUserAccount] = useRecoilState(userAccountAtom);
-  console.log("userAccount::", userAccount);
 
   const registerUser = async () => {
     try {
@@ -24,7 +23,6 @@ const SignUp = () => {
       });
       console.log("here is response", response);
       if (response.ok) {
-        let data = await response.json();
         navigate("/login");
       }
     } catch (error) {
@@ -37,7 +35,7 @@ const SignUp = () => {
       <Container className="pt-5">
         <Card>
           <div className="SignUpForm">
-            <h1 className="SignInHeading">SIGN UP</h1>
+            <h3 className="SignInHeading">SIGN UP</h3>
             <div noValidate>
               <Card.Body>
                 <Form.Group>
@@ -106,7 +104,7 @@ const SignUp = () => {
                 </Form.Group>
 
                 <Button
-                  variant="primary"
+                  /*  variant="primary" */
                   className="SignUpButton mt-3"
                   onClick={registerUser}
                 >

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useRecoilState } from "recoil";
-import { reservationAtom, rooms as roomsAtom } from "../../atoms/atoms";
+import { rooms as roomsAtom } from "../../atoms/atoms";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
@@ -15,11 +15,11 @@ import { useNavigate } from "react-router";
 
 const BookingForm = () => {
   useAuthGuard();
-  const [reservation, setReservation] = useRecoilState(reservationAtom);
+
   const BASE_URL = process.env.REACT_APP_BACKEND;
   const { id } = useParams();
 
-  const [userId, setUserId] = useRecoilState(userAtom);
+  const [setUserId] = useRecoilState(userAtom);
 
   const rooms = useRecoilValue(roomsAtom);
   const userDataId = useRecoilValue(userAtomSelector);
@@ -70,7 +70,7 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(reservation);
+
     try {
       let response = await fetch(`${BASE_URL}/bookings`, {
         method: "POST",
@@ -107,12 +107,11 @@ const BookingForm = () => {
               <h2 className="book-title">Book your Room NOW!</h2>
 
               <span className="room-title">{room.roomName}</span>
-              <div style={{ width: "200px", height: "200px" }}>
+              <div className="booking-image">
                 <img
                   src={room.imageUrl}
                   alt=""
-                  className="img-fluid "
-                  style={{ width: "200px", height: "200px" }}
+                  className="img-fluid w-100 h-100"
                 />
               </div>
             </div>
@@ -167,7 +166,7 @@ const BookingForm = () => {
                     unique
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button className="booking-button" type="submit">
                   Submit
                 </Button>
               </Form>

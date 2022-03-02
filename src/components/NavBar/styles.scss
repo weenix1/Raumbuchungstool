@@ -1,3 +1,30 @@
 .navbar-color {
-  background-color: #014f61;
+  background-color: #17a2b8;
+}
+.home {
+  background-color: #17a2b8;
+  display: flex;
+  justify-content: flex-end;
+
+  .home-links {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.747) !important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  background-color: #fff;
+  border-radius: 5px;
+}
+.signUp-button {
+  color: #000000 !important;
+  border-color: #000000 !important;
+  background-color: #17a2b8 !important;
+}
+
+.signUp-button:hover {
+  background-color: #fff !important;
 }
