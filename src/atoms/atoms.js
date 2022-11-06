@@ -61,3 +61,11 @@ export const userAtomSelector = selector({
     return userDataId;
   },
 });
+
+export const reservationAtomSelector = selector({
+  key: "reservation",
+  get : ({get})=> {
+  const reservation = get(reservationAtom);
+  return reservation;
+  }
+});
